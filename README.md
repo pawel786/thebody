@@ -361,7 +361,7 @@
     <div class="wrap">
       <div class="hero-copy">
         <div class="hero-eyebrow fade-up" style="animation-delay:.05s"><span class="dot"></span> Salon zabiegów na ciało — Katowice, Barcelońska 82</div>
-        <h1 class="fade-up" style="animation-delay:.15s">Ciało to <em>The Body Katowice</em>,<br>twoje miejsce pełne piękna,relaksu i troski o siebie.</h1>
+        <h1 class="fade-up" style="animation-delay:.15s"> <em>The Body Katowice</em>,<br>twoje miejsce pełne piękna,relaksu i troski o siebie.</h1>
         <p class="hero-sub fade-up" style="animation-delay:.28s">Zadbaj o wygląd i dobre samopoczucie w wyjątkowej przestrzeni stworzonej z myślą o twoich Oferujemy szeroki wybór zabiegów na twarz i ciało, relaksujące masaże oraz profesjonalna strefa paznokci. Nowczesne technologie takie jak HIFU, Rf, laser tulowy i laser IQ pomagają poprawić kondycje i wygląd skóry, a indywidualne podejście pozwala dopasować pielegnację do twoich oczekiwań. Zrelaksuj się podkreśl swoje piękno. Poczuj wyjatkową troskę w The Body Katowice.</p>
         <div class="hero-cta fade-up" style="animation-delay:.4s">
           <a href="https://booksy.com/pl-pl/238094_the-body-katowice_trening-i-dieta_11597_katowice" target="_blank" rel="noopener" class="btn btn-primary">Zarezerwuj wizytę</a>
