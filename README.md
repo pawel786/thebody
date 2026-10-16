@@ -400,17 +400,17 @@
       </div>
       <div class="zones">
         <div class="zone">
-          <div class="zone-tag">Strefa I</div>
+          <div class="zone-tag"></div>
           <div>
-            <h3>Strefa treningowa</h3>
-            <p>Bieżnie termoaktywne Vacutherm i automatyczne rolery do ciała — trening, który wspomaga krążenie, spalanie i efekty zabiegów modelujących.</p>
+            <h3>The Bosy Katowice- Twoje miejsce w sercu Piotrowic</h3>
+            <p>Szukasz miejsca, w którym kompleksowo zadbasz o siebie? Poznaj The Bodt Katowice, salon kosmetyczny w Katowicach, Piotrowicach, stworzony z myślą o pięknie, dobrym samopoczuciu i świadomej pielęgnacji. .</p>
           </div>
         </div>
         <div class="zone">
-          <div class="zone-tag">Strefa II</div>
+          <div class="zone-tag"></div>
           <div>
-            <h3>Strefa gabinetowa</h3>
-            <p>Gabinety zabiegowe, w których dobieramy technikę do celu: blizna, rozstęp, cellulit, obrzęk limfatyczny czy głęboki relaks — każdy przypadek traktujemy osobno.</p>
+            <h3>Oferta</h3>
+            <p>Oferujemy nowoczesne zabiegi na twarz i ciało, terapie modelujące sylwetkę profesjonalne masaże oraz stylizację paznokci. Łączymy innowacyjne technologie z indywidualnym podejściem dbając o potrzeby twojej skóry, ciała i chwile zasłużonego relaksu..</p>
           </div>
         </div>
       </div>
