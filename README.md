@@ -402,7 +402,7 @@
         <div class="zone">
           <div class="zone-tag"></div>
           <div>
-            <h3>The Bosy Katowice- Twoje miejsce w sercu Piotrowic</h3>
+            <h3>The Body Katowice- Twoje miejsce w sercu Piotrowic</h3>
             <p>Szukasz miejsca, w którym kompleksowo zadbasz o siebie? Poznaj The Bodt Katowice, salon kosmetyczny w Katowicach, Piotrowicach, stworzony z myślą o pięknie, dobrym samopoczuciu i świadomej pielęgnacji. .</p>
           </div>
         </div>
