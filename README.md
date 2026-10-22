@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
@@ -122,9 +122,11 @@
   .hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
   .hero-eyebrow{font-size:13.5px;color:var(--bronze-dark);font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
   .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--bronze);flex-shrink:0;}
-  .hero h1{font-size:clamp(36px,6vw,70px);line-height:1.05;font-weight:400;}
+  .hero h1{font-size:clamp(30px,4.4vw,56px);line-height:1.1;font-weight:400;}
   .hero h1 em{font-style:italic;font-weight:400;color:var(--bronze-dark);}
-  .hero-sub{margin-top:24px;max-width:480px;font-size:17.5px;color:var(--ink-2);opacity:0.85;}
+  .hero-sub{margin-top:24px;max-width:540px;font-size:16.5px;color:var(--ink-2);}
+  .hero-sub p + p{margin-top:14px;}
+  .hero-sub .closing{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--bronze-dark);}
   .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;}
   .hero-cta .call-link{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;padding:14px 4px;}
   .hero-cta .call-link svg{flex-shrink:0;}
@@ -133,15 +135,31 @@
   .hero-meta .stat .num{font-family:var(--serif);font-size:25px;}
   .hero-meta .stat .label{font-size:12px;color:var(--ink-2);opacity:0.7;}
   .hero-art{position:relative;min-width:0;}
-  .hero-photo{position:relative;max-width:460px;margin-left:auto;}
-  .hero-photo::before{
-    content:"";position:absolute;top:16px;left:16px;right:-16px;bottom:-16px;
-    border:1px solid var(--gold);z-index:0;
+  .gallery{position:relative;--gh:420px;}
+  .g-track{
+    position:relative;display:flex;gap:18px;overflow-x:auto;overflow-y:hidden;padding:26px 0;
+    scrollbar-width:none;-ms-overflow-style:none;cursor:grab;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
   }
-  .logo-box{position:relative;z-index:1;background:var(--cream);border-radius:2px;padding:22px 18px;}
-  .logo-inner{overflow:hidden;}
-  .logo-fallback{font-family:var(--serif);font-style:italic;font-size:clamp(34px,6vw,60px);color:var(--bronze-dark);text-align:center;padding:60px 0;}
-  .logo-inner img{width:100%;height:auto;mix-blend-mode:multiply;filter:brightness(1.06);transform:scale(1.15);}
+  .g-track::-webkit-scrollbar{display:none;}
+  .g-track.dragging{cursor:grabbing;user-select:none;}
+  .g-track:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .g-slide{
+    flex:0 0 auto;height:var(--gh);aspect-ratio:var(--ar);border-radius:3px;overflow:hidden;
+    background:var(--ink);box-shadow:0 18px 40px -18px rgba(32,26,21,.55);will-change:transform,opacity;
+  }
+  .g-slide img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;user-select:none;-webkit-user-drag:none;}
+  .g-btn{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;
+    border:1px solid rgba(244,239,229,.55);background:rgba(32,26,21,.6);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;
+    transition:background .25s ease;
+  }
+  .g-btn:hover{background:var(--ink);}
+  .g-prev{left:6px;}
+  .g-next{right:6px;}
+  .g-hint{text-align:center;font-size:12px;color:var(--ink-2);opacity:.6;margin-top:2px;}
 
   .fade-up{opacity:0;transform:translateY(16px);animation:fadeUp .8s ease forwards;}
   @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
@@ -158,7 +176,7 @@
   .about-copy p{font-size:16.5px;margin-bottom:18px;color:var(--ink-2);}
   .about-copy p.lede{font-family:var(--serif);font-size:24px;line-height:1.4;font-weight:400;color:var(--ink);}
   .zones{display:flex;flex-direction:column;}
-  .zone{padding:30px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:64px 1fr;gap:18px;}
+  .zone{padding:30px 0;border-top:1px solid var(--line);}
   .zone:last-child{border-bottom:1px solid var(--line);}
   .zone .zone-tag{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--bronze-dark);}
   .zone h3{font-size:19px;margin-bottom:8px;font-weight:500;}
@@ -291,26 +309,18 @@
     nav.primary-nav{display:none;}
     .burger{display:flex;}
     .hero .wrap{grid-template-columns:1fr;}
-    .hero-art{order:-1;width:100%;margin:0 0 28px;padding-right:16px;}
-    .hero-photo{max-width:360px;margin:0 auto;}
-    .hero-photo::before{top:12px;left:12px;right:-12px;bottom:-12px;}
+    .hero-art{order:-1;width:100%;margin:0 0 12px;}
+    .gallery{--gh:340px;}
   }
   @media(max-width:600px){
     .wrap{padding:0 16px;}
+    .gallery{--gh:300px;}
+    .g-btn{width:36px;height:36px;}
     .hero{padding:120px 0 60px;}
     .about,.treatments,.process,.team,.testimonials,.contact{padding:70px 0;}
     .cta-band{padding:60px 0;}
   }
 </style>
-<script>
-  // Szuka logo pod kilkoma nazwami - wystarczy wgrac plik obok index.html
-  var logoSrc=['logo.jpg','logo.jpeg','image.png','image.jpg','hero.png','hero.jpg','logo.webp'];
-  function logoNext(img){
-    var n=logoSrc.shift();
-    if(n){img.src=n;}
-    else{img.onerror=null;img.parentNode.innerHTML='<div class="logo-fallback">The Body</div>';}
-  }
-</script>
 </head>
 <body>
 
@@ -361,8 +371,12 @@
     <div class="wrap">
       <div class="hero-copy">
         <div class="hero-eyebrow fade-up" style="animation-delay:.05s"><span class="dot"></span> Salon zabiegów na ciało — Katowice, Barcelońska 82</div>
-        <h1 class="fade-up" style="animation-delay:.15s"> <em>The Body Katowice</em>,<br>twoje miejsce pełne piękna,relaksu i troski o siebie.</h1>
-        <p class="hero-sub fade-up" style="animation-delay:.28s">Zadbaj o wygląd i dobre samopoczucie w wyjątkowej przestrzeni stworzonej z myślą o twoich Oferujemy szeroki wybór zabiegów na twarz i ciało, relaksujące masaże oraz profesjonalna strefa paznokci. Nowczesne technologie takie jak HIFU, Rf, laser tulowy i laser IQ pomagają poprawić kondycje i wygląd skóry, a indywidualne podejście pozwala dopasować pielegnację do twoich oczekiwań. Zrelaksuj się podkreśl swoje piękno. Poczuj wyjatkową troskę w The Body Katowice.</p>
+        <h1 class="fade-up" style="animation-delay:.15s"><em>The Body Katowice</em>,<br>Twoje miejsce pełne piękna, relaksu i troski o siebie.</h1>
+        <div class="hero-sub fade-up" style="animation-delay:.28s">
+          <p>Zadbaj o wygląd i dobre samopoczucie w wyjątkowej przestrzeni stworzonej z myślą o Twoich potrzebach. Oferujemy szeroki wybór zabiegów na twarz i ciało, relaksujące masaże oraz profesjonalną strefę paznokci.</p>
+          <p>Nowoczesne technologie, takie jak HIFU, RF, laser tułowy i laser IQ, pomagają poprawić kondycję i wygląd skóry, a indywidualne podejście pozwala dopasować pielęgnację do Twoich oczekiwań.</p>
+          <p class="closing">Zrelaksuj się, podkreśl swoje piękno. Poczuj wyjątkową troskę w The Body Katowice.</p>
+        </div>
         <div class="hero-cta fade-up" style="animation-delay:.4s">
           <a href="https://booksy.com/pl-pl/238094_the-body-katowice_trening-i-dieta_11597_katowice" target="_blank" rel="noopener" class="btn btn-primary">Zarezerwuj wizytę</a>
           <a href="#zabiegi" class="btn btn-ghost">Zobacz zabiegi</a>
@@ -378,13 +392,16 @@
         </div>
       </div>
       <div class="hero-art fade-up" style="animation-delay:.3s">
-        <div class="hero-photo">
-          <div class="logo-box">
-            <div class="logo-inner">
-              <img src="logo.png" alt="The Body Katowice — logo salonu" width="532" height="375" onerror="logoNext(this)">
-            </div>
-          </div>
+        <div class="gallery" role="region" aria-roledescription="karuzela" aria-label="Zdjęcia z salonu The Body Katowice">
+          <div class="g-track" id="gTrack" tabindex="0"></div>
+          <button class="g-btn g-prev" id="gPrev" type="button" aria-label="Poprzednie zdjęcie">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="g-btn g-next" id="gNext" type="button" aria-label="Następne zdjęcie">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
         </div>
+        <p class="g-hint">Przesuń, aby zobaczyć więcej</p>
       </div>
     </div>
   </section>
@@ -400,18 +417,12 @@
       </div>
       <div class="zones">
         <div class="zone">
-          <div class="zone-tag"></div>
-          <div>
-            <h3>The Body Katowice- Twoje miejsce w sercu Piotrowic</h3>
-            <p>Szukasz miejsca, w którym kompleksowo zadbasz o siebie? Poznaj The Body Katowice, salon kosmetyczny w Katowicach, stworzony z myślą o pięknie, dobrym samopoczuciu i świadomej pielęgnacji. .</p>
-          </div>
+          <h3>The Body Katowice — Twoje miejsce w sercu Piotrowic</h3>
+          <p>Szukasz miejsca, w którym kompleksowo zadbasz o siebie? Poznaj The Body Katowice, salon kosmetyczny w Katowicach, stworzony z myślą o pięknie, dobrym samopoczuciu i świadomej pielęgnacji.</p>
         </div>
         <div class="zone">
-          <div class="zone-tag"></div>
-          <div>
-            <h3>Oferta</h3>
-            <p>Oferujemy nowoczesne zabiegi na twarz i ciało, terapie modelujące sylwetkę profesjonalne masaże oraz stylizację paznokci. Łączymy innowacyjne technologie z indywidualnym podejściem dbając o potrzeby twojej skóry, ciała i chwile zasłużonego relaksu..</p>
-          </div>
+          <h3>Oferta</h3>
+          <p>Oferujemy nowoczesne zabiegi na twarz i ciało, terapie modelujące sylwetkę, profesjonalne masaże oraz stylizację paznokci. Łączymy innowacyjne technologie z indywidualnym podejściem, dbając o potrzeby Twojej skóry, ciała i chwile zasłużonego relaksu.</p>
         </div>
       </div>
     </div>
@@ -705,6 +716,135 @@
     [...dotsEl.children].forEach((d, idx) => d.classList.toggle('active', idx === i));
   }
   setInterval(() => showTesti((testiIndex + 1) % testimonials.length), 6000);
+</script>
+
+<script>
+  // Galeria: zdjęcia wpisz w liście "photos" (nazwa pliku, opis, szerokość i wysokość zdjęcia w pikselach)
+  (function(){
+    var photos=[
+      {src:'zdjecie-1.jpg',alt:'Nowość: masaż misami tybetańskimi w The Body Katowice',w:800,h:1071},
+      {src:'zdjecie-2.jpg',alt:'Stylizacja paznokci w The Body Katowice',w:412,h:412},
+      {src:'zdjecie-3.jpg',alt:'The Body Katowice',w:412,h:412},
+      {src:'zdjecie-4.jpg',alt:'Endermologia — ciało i twarz',w:412,h:412}
+    ];
+    var track=document.getElementById('gTrack');
+    if(!track) return;
+    var n=photos.length, slides=[], S=0, pos=0, last=0, prev=0;
+    var paused=false, dragging=false, running=true, resumeT=null;
+    var speed=24; // piksele na sekundę - im mniej, tym wolniej
+    var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    for(var k=0;k<3;k++){
+      photos.forEach(function(p){
+        var d=document.createElement('div');
+        d.className='g-slide';
+        d.style.setProperty('--ar',p.w+' / '+p.h);
+        if(k!==1) d.setAttribute('aria-hidden','true');
+        var img=new Image();
+        img.src=p.src; img.alt=(k===1?p.alt:''); img.width=p.w; img.height=p.h; img.draggable=false;
+        img.onerror=function(){ d.style.display='none'; measure(); };
+        d.appendChild(img); track.appendChild(d); slides.push(d);
+      });
+    }
+    function vis(k){ return slides.slice(k*n,(k+1)*n).filter(function(s){return s.style.display!=='none';}); }
+    function measure(){
+      var a=vis(0), b=vis(1);
+      if(a.length&&b.length) S=b[0].offsetLeft-a[0].offsetLeft;
+    }
+    function center(){
+      measure();
+      var f=vis(1)[0]; if(!f) return;
+      pos=f.offsetLeft+f.offsetWidth/2-track.clientWidth/2;
+      wrap(); track.scrollLeft=pos; last=track.scrollLeft;
+    }
+    function wrap(){
+      if(!S) return;
+      while(pos>=2.5*S) pos-=S;
+      while(pos<0.5*S) pos+=S;
+    }
+    function depth(){
+      var r=track.getBoundingClientRect(), cx=r.left+r.width/2;
+      for(var i=0;i<slides.length;i++){
+        var s=slides[i];
+        if(s.style.display==='none') continue;
+        var b=s.getBoundingClientRect();
+        if(b.right<r.left-80||b.left>r.right+80) continue;
+        var d=Math.min(1,Math.abs(b.left+b.width/2-cx)/(r.width*0.55));
+        s.style.transform='scale('+(1-0.13*d).toFixed(3)+')';
+        s.style.opacity=(1-0.4*d).toFixed(2);
+      }
+    }
+    function tick(t){
+      var dt=Math.min(0.05,(t-prev)/1000); prev=t;
+      var sl=track.scrollLeft;
+      if(Math.abs(sl-last)>1.5) pos=sl;
+      if(!paused && !dragging && running && !reduce) pos+=speed*dt;
+      wrap();
+      if(Math.abs(track.scrollLeft-pos)>=0.5) track.scrollLeft=pos;
+      last=track.scrollLeft;
+      depth();
+      requestAnimationFrame(tick);
+    }
+    function pause(ms){
+      paused=true; clearTimeout(resumeT);
+      resumeT=setTimeout(function(){paused=false;},ms||2500);
+    }
+    function step(dir){
+      pause(3500);
+      if(S){
+        // ustaw się w środku zapasu zdjęć, żeby przewinięcie nie trafiło na „szew” pętli
+        var cur=track.scrollLeft;
+        if(cur>=2*S) cur-=S; else if(cur<S) cur+=S;
+        track.scrollLeft=cur; pos=track.scrollLeft; last=pos;
+      }
+      var r=track.getBoundingClientRect(), cx=r.left+r.width/2;
+      var list=slides.filter(function(s){return s.style.display!=='none';});
+      var best=0, bd=1e9;
+      list.forEach(function(s,i){
+        var b=s.getBoundingClientRect(), d=Math.abs(b.left+b.width/2-cx);
+        if(d<bd){bd=d;best=i;}
+      });
+      var t=list[Math.max(0,Math.min(list.length-1,best+dir))];
+      var tb=t.getBoundingClientRect();
+      track.scrollBy({left:(tb.left+tb.width/2)-cx,behavior:'smooth'});
+    }
+
+    // przeciąganie myszką (na telefonie działa zwykłe przesuwanie palcem)
+    var lastX=0;
+    track.addEventListener('pointerdown',function(e){
+      if(e.pointerType!=='mouse'||e.button!==0) return;
+      dragging=true; lastX=e.clientX; track.classList.add('dragging');
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove',function(e){
+      if(!dragging) return;
+      track.scrollLeft-=(e.clientX-lastX); lastX=e.clientX;
+    });
+    function endDrag(){ if(!dragging) return; dragging=false; track.classList.remove('dragging'); pause(2000); }
+    track.addEventListener('pointerup',endDrag);
+    track.addEventListener('pointercancel',endDrag);
+
+    // zatrzymanie, gdy ktoś najeżdża lub dotyka galerii
+    track.addEventListener('pointerenter',function(e){ if(e.pointerType==='mouse'){ paused=true; clearTimeout(resumeT); } });
+    track.addEventListener('pointerleave',function(e){ if(e.pointerType==='mouse'&&!dragging) pause(600); });
+    track.addEventListener('touchstart',function(){ pause(3500); },{passive:true});
+    track.addEventListener('wheel',function(){ pause(2500); },{passive:true});
+    track.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'){ e.preventDefault(); step(1); }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); step(-1); }
+    });
+    document.getElementById('gPrev').addEventListener('click',function(){ step(-1); });
+    document.getElementById('gNext').addEventListener('click',function(){ step(1); });
+
+    // ruch tylko wtedy, gdy galeria jest widoczna na ekranie
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(en){ running=en[0].isIntersecting; }).observe(track);
+    }
+    var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(center,150); });
+
+    center();
+    requestAnimationFrame(function(t){ prev=t; tick(t); });
+  })();
 </script>
 
 </body>
