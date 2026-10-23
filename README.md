@@ -490,7 +490,7 @@
         </div>
         <div class="step">
           <div class="num">02</div>
-          <h3>Diagnoza i plan</h3>
+          <h3>Plan zabiegowy</h3>
           <p>Dobieramy zabiegi i częstotliwość sesji indywidualnie do przypadku.</p>
         </div>
         <div class="step">
