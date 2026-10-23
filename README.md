@@ -183,62 +183,38 @@
   .zone p{font-size:14.5px;color:var(--ink-2);}
   @media(max-width:640px){.zone{grid-template-columns:1fr;gap:6px;}}
 
-  /* ---------- Treatments ---------- */
+  /* ---------- Polecane oferty ---------- */
   .treatments{padding:100px 0;background:var(--ink);color:var(--cream);}
   .treatments .kicker{color:var(--gold);}
   .treatments .section-head p{color:var(--cream);opacity:0.65;}
-
-  .treat-tabs{
-    display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:8px;
-    scrollbar-width:thin;
+  .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .offer{
+    display:flex;flex-direction:column;min-width:0;
+    padding:28px 26px 24px;border:1px solid var(--line-light);border-radius:2px;
+    transition:border-color .25s ease, transform .25s ease;
   }
-  .treat-tabs::-webkit-scrollbar{height:4px;}
-  .treat-tabs::-webkit-scrollbar-thumb{background:var(--bronze);border-radius:4px;}
-  .tab-btn{
-    flex-shrink:0;
-    background:transparent;
-    border:1px solid var(--line-light);
-    color:var(--cream);
-    opacity:0.6;
-    padding:10px 18px;
-    font-family:var(--sans);
-    font-size:13.5px;
-    font-weight:600;
-    border-radius:20px;
-    cursor:pointer;
-    transition:all .25s ease;
-    white-space:nowrap;
-  }
-  .tab-btn:hover{opacity:0.85;}
-  .tab-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink);opacity:1;}
-
-  .treat-panel{display:none;border-top:1px solid var(--line-light);}
-  .treat-panel.active{display:block;}
-
-  .treat-row{display:grid;grid-template-columns:32px 1.3fr 1.3fr 110px;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line-light);transition:padding-left .3s ease;}
-  .treat-row:hover{padding-left:12px;}
-  .treat-row .idx{font-size:12.5px;color:var(--gold);font-weight:600;}
-  .treat-row h3{font-size:19px;font-weight:400;}
-  .treat-row h3 .promo{
+  .offer:hover{border-color:var(--gold);transform:translateY(-3px);}
+  .offer h3{font-size:21px;font-weight:400;line-height:1.25;}
+  .offer h3 .promo{
     display:inline-block;margin-left:10px;font-family:var(--sans);font-size:10.5px;font-weight:700;
     letter-spacing:0.04em;text-transform:uppercase;color:var(--ink);background:var(--gold);
     padding:2px 8px;border-radius:10px;vertical-align:middle;
   }
-  .treat-row .desc{font-size:13.5px;opacity:0.65;}
-  .treat-row .price{font-size:14px;letter-spacing:0.01em;color:var(--gold);justify-self:end;text-align:right;font-weight:600;white-space:nowrap;}
+  .offer .desc{font-size:14px;opacity:0.7;margin-top:12px;flex:1;}
+  .offer .price{
+    margin-top:20px;padding-top:16px;border-top:1px solid var(--line-light);
+    font-size:17px;font-weight:700;color:var(--gold);letter-spacing:0.01em;min-height:66px;
+  }
+  .offer .price small{display:block;font-size:12.5px;font-weight:500;opacity:0.85;margin-top:2px;}
   .treat-more{
-    margin-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
-    padding-top:26px;
+    margin-top:34px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;
   }
-  .treat-more p{font-size:14px;opacity:0.65;max-width:420px;}
-  @media(max-width:780px){
-    .treat-row{grid-template-columns:22px 1fr;grid-template-areas:"i h" ". d" ". p";row-gap:6px;padding:18px 0;}
-    .treat-row .idx{grid-area:i;}
-    .treat-row h3{grid-area:h;font-size:17px;}
-    .treat-row .desc{grid-area:d;}
-    .treat-row .price{grid-area:p;justify-self:start;text-align:left;}
-    .treat-row:hover{padding-left:0;}
-  }
+  .treat-more p{font-size:14px;opacity:0.65;max-width:460px;}
+  .treat-more .actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-gold{background:var(--gold);color:var(--ink);}
+  .btn-gold:hover{background:var(--cream);}
+  @media(max-width:960px){.offers{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.offers{grid-template-columns:1fr;}.offer{padding:24px 22px 20px;}.offer .price{min-height:0;}}
 
   /* ---------- Process ---------- */
   .process{padding:100px 0;}
@@ -428,99 +404,71 @@
     </div>
   </section>
 
-  <!-- TREATMENTS -->
+  <!-- POLECANE OFERTY -->
   <section class="treatments" id="zabiegi">
     <div class="wrap">
       <div class="section-head">
         <div>
           <span class="kicker">Oferta</span>
-          <h2>Ponad 90 zabiegów — dobranych do Twojego ciała, nie do kalendarza promocji.</h2>
+          <h2>Polecane oferty</h2>
         </div>
-        <p>Pełna oferta z aktualnymi cenami i promocjami dostępna jest na Booksy — poniżej przegląd wg kategorii.</p>
+        <p>Wybrane zabiegi z naszej oferty. Pełny cennik, aktualne promocje i wolne terminy znajdziesz na Booksy.</p>
       </div>
 
-      <div class="treat-tabs" id="treatTabs">
-        <button class="tab-btn active" data-tab="popularne">Popularne</button>
-        <button class="tab-btn" data-tab="sylwetka">Modelowanie sylwetki</button>
-        <button class="tab-btn" data-tab="twarz">Zabiegi na twarz</button>
-        <button class="tab-btn" data-tab="masaz">Masaż</button>
-        <button class="tab-btn" data-tab="depilacja">Depilacja i laser</button>
-        <button class="tab-btn" data-tab="paznokcie">Paznokcie</button>
-        <button class="tab-btn" data-tab="zaawansowane">Zaawansowana pielęgnacja</button>
-      </div>
-
-      <div class="treat-panels">
-
-        <div class="treat-panel active" id="panel-popularne">
-          <div class="treat-row"><span class="idx">01</span><h3>Masaż antycellulitowy</h3><p class="desc">Poprawa krążenia, ujędrnienie i redukcja cellulitu — wybrana partia lub całe ciało.</p><span class="price">od 240 zł</span></div>
-          <div class="treat-row"><span class="idx">02</span><h3>Terapia blizn MSTR</h3><p class="desc">Manualna terapia tkanki bliznowatej metodą McLoughlin Scar Tissue Release.</p><span class="price">250 zł</span></div>
-          <div class="treat-row"><span class="idx">03</span><h3>Autorski masaż</h3><p class="desc">Połączenie masażu antycellulitowego, limfodrenażu, Lipokiller i relaksacyjnego.</p><span class="price">350 zł</span></div>
-          <div class="treat-row"><span class="idx">04</span><h3>Zabieg na twarz dedykowany</h3><p class="desc">Kompleksowa pielęgnacja twarzy dobrana indywidualnie po konsultacji.</p><span class="price">330 zł</span></div>
-          <div class="treat-row"><span class="idx">05</span><h3>Endermologia</h3><p class="desc">Zabieg aparaturowy modelujący sylwetkę — pojedynczo lub w pakiecie.</p><span class="price">od 90 zł</span></div>
-          <div class="treat-row"><span class="idx">06</span><h3>Pedicure</h3><p class="desc">Higieniczny, hybrydowy lub klasyczny z hybrydą.</p><span class="price">od 100 zł</span></div>
+      <div class="offers">
+        <div class="offer">
+          <h3>Masaż misami tybetańskimi<span class="promo">Nowość</span></h3>
+          <p class="desc">Głęboko relaksujący masaż dźwiękiem. Wibracje mis pomagają wyciszyć umysł i rozluźnić ciało.</p>
+          <div class="price">250 zł</div>
         </div>
-
-        <div class="treat-panel" id="panel-sylwetka">
-          <div class="treat-row"><span class="idx">01</span><h3>HIFU ciało i twarz<span class="promo">Promocja</span></h3><p class="desc">Skoncentrowane ultradźwięki — lifting i modelowanie bez skalpela.</p><span class="price">od 405 zł</span></div>
-          <div class="treat-row"><span class="idx">02</span><h3>Terapia blizn i rozstępów</h3><p class="desc">Mikropunktura przebudowująca tkankę — blizny i rozstępy stają się płytsze.</p><span class="price">od 45 zł</span></div>
-          <div class="treat-row"><span class="idx">03</span><h3>Indiba Deep Beauty</h3><p class="desc">Redukcja tkanki tłuszczowej i cellulitu, detoksykacja i drenaż.</p><span class="price">od 135 zł</span></div>
-          <div class="treat-row"><span class="idx">04</span><h3>Liporadiologia Vinci</h3><p class="desc">Fale radiowe, LED i masaż podciśnieniowy — redukcja tkanki tłuszczowej.</p><span class="price">od 180 zł</span></div>
-          <div class="treat-row"><span class="idx">05</span><h3>RF Infinity ciało<span class="promo">Promocja</span></h3><p class="desc">Fale radiowe pobudzające produkcję kolagenu — ujędrnienie skóry.</p><span class="price">od 180 zł</span></div>
-          <div class="treat-row"><span class="idx">06</span><h3>Mezoterapia lipolityczna</h3><p class="desc">L-karnityna wspomagająca spalanie tłuszczu na opornych partiach.</p><span class="price">450 zł</span></div>
-          <div class="treat-row"><span class="idx">07</span><h3>ThermoGenique Body Shape</h3><p class="desc">Wyszczuplenie, ujędrnienie i redukcja obrzęków z masażem drenującym.</p><span class="price">od 207 zł</span></div>
-          <div class="treat-row"><span class="idx">08</span><h3>Terapia czaszkowo-krzyżowa</h3><p class="desc">Delikatna praca manualna redukująca napięcia i stres w całym ciele.</p><span class="price">270 zł</span></div>
+        <div class="offer">
+          <h3>Masaż antycellulitowy</h3>
+          <p class="desc">Poprawa krążenia krwi i limfy, ujędrnienie skóry i mniej widoczny cellulit.</p>
+          <div class="price">od 240 zł<small>wybrane partie ciała 240 zł, całe ciało 270 zł</small></div>
         </div>
-
-        <div class="treat-panel" id="panel-twarz">
-          <div class="treat-row"><span class="idx">01</span><h3>Masaż kosmetologiczny</h3><p class="desc">Relaksujący masaż poprawiający napięcie i koloryt skóry twarzy.</p><span class="price">225 zł</span></div>
-          <div class="treat-row"><span class="idx">02</span><h3>RF Infinity twarz</h3><p class="desc">Fale radiowe napinające skórę i wygładzające zmarszczki.</p><span class="price">od 252 zł</span></div>
-          <div class="treat-row"><span class="idx">03</span><h3>ThermoGenique twarz</h3><p class="desc">Kontrolowane ciepło stymulujące kolagen i elastynę.</p><span class="price">135 zł</span></div>
-          <div class="treat-row"><span class="idx">04</span><h3>Liporadiologia twarzy</h3><p class="desc">Lifting i odmłodzenie — gładsza, bardziej elastyczna skóra.</p><span class="price">od 180 zł</span></div>
-          <div class="treat-row"><span class="idx">05</span><h3>Akupunktura kosmetyczna</h3><p class="desc">Precyzyjne igły pobudzające mikrokrążenie i produkcję kolagenu.</p><span class="price">270 zł</span></div>
-          <div class="treat-row"><span class="idx">06</span><h3>Mezoterapia igłowa</h3><p class="desc">Nawilżenie i regeneracja preparatami Jalupro, Revok, Neauvia.</p><span class="price">od 270 zł</span></div>
-          <div class="treat-row"><span class="idx">07</span><h3>BB Glow</h3><p class="desc">Rozświetlenie i wyrównanie kolorytu — efekt „make-up no make-up”.</p><span class="price">198 zł</span></div>
-          <div class="treat-row"><span class="idx">08</span><h3>Biolifting twarzy</h3><p class="desc">Nieinwazyjny lifting igłowy stymulujący kolagen.</p><span class="price">od 495 zł</span></div>
+        <div class="offer">
+          <h3>Autorski masaż</h3>
+          <p class="desc">Połączenie technik masażu antycellulitowego, limfodrenażowego, Lipokiller i relaksacyjnego.</p>
+          <div class="price">350 zł</div>
         </div>
-
-        <div class="treat-panel" id="panel-masaz">
-          <div class="treat-row"><span class="idx">01</span><h3>Manualny drenaż limfatyczny</h3><p class="desc">Redukcja obrzęków, wsparcie regeneracji po zabiegach estetycznych.</p><span class="price">220 zł</span></div>
-          <div class="treat-row"><span class="idx">02</span><h3>Masaż relaksacyjny dla kobiet</h3><p class="desc">Płynne, delikatne ruchy na indywidualnie dobranym olejku.</p><span class="price">250 zł</span></div>
-          <div class="treat-row"><span class="idx">03</span><h3>Lipokiller</h3><p class="desc">Silny limfodrenaż połączony z modelowaniem sylwetki.</p><span class="price">400 zł</span></div>
-          <div class="treat-row"><span class="idx">04</span><h3>Lipoplastyka manualna</h3><p class="desc">Precyzyjne modelowanie wybranej partii ciała.</p><span class="price">od 500 zł</span></div>
-          <div class="treat-row"><span class="idx">05</span><h3>Masaż Kobido</h3><p class="desc">Japoński masaż liftingujący twarz, szyję i dekolt.</p><span class="price">250 zł</span></div>
-          <div class="treat-row"><span class="idx">06</span><h3>Masaż misami tybetańskimi</h3><p class="desc">Głęboko relaksujący masaż dźwiękiem — wyciszenie i odprężenie ciała.</p><span class="price">250 zł</span></div>
-          <div class="treat-row"><span class="idx">07</span><h3>Masaż dla kobiet w ciąży</h3><p class="desc">Delikatny masaż dostosowany do potrzeb przyszłych mam.</p><span class="price">200 zł</span></div>
-          <div class="treat-row"><span class="idx">08</span><h3>Owijanie Styx Aroma Derm</h3><p class="desc">Gorące owijanie z aromaterapią — nawilżenie i ujędrnienie.</p><span class="price">250 zł</span></div>
+        <div class="offer">
+          <h3>Terapia blizn MSTR</h3>
+          <p class="desc">Specjalistyczna terapia manualna do pracy z bliznami, wykonywana delikatnymi ruchami opuszków palców.</p>
+          <div class="price">250 zł</div>
         </div>
-
-        <div class="treat-panel" id="panel-depilacja">
-          <div class="treat-row"><span class="idx">01</span><h3>Depilacja laserowa</h3><p class="desc">Wąsik, pachy, bikini, nogi — pojedynczo lub w pakietach.</p><span class="price">od 80 zł</span></div>
-          <div class="treat-row"><span class="idx">02</span><h3>Peeling węglowy</h3><p class="desc">Laserowe oczyszczenie i rozjaśnienie skóry twarzy.</p><span class="price">261 zł</span></div>
-          <div class="treat-row"><span class="idx">03</span><h3>Fotoodmładzanie</h3><p class="desc">Redukcja oznak starzenia i poprawa kolorytu skóry.</p><span class="price">315 zł</span></div>
-          <div class="treat-row"><span class="idx">04</span><h3>Usuwanie naczynek i rumienia</h3><p class="desc">Precyzyjna redukcja widocznych naczynek i zaczerwienień.</p><span class="price">od 225 zł</span></div>
-          <div class="treat-row"><span class="idx">05</span><h3>Laser tułowy — ciało<span class="promo">Promocja</span></h3><p class="desc">Modelowanie większych partii — brzuch, twarz, szyja, dekolt.</p><span class="price">od 799 zł</span></div>
+        <div class="offer">
+          <h3>Lipokiller</h3>
+          <p class="desc">Mocny limfodrenaż połączony z technikami modelującymi sylwetkę.</p>
+          <div class="price">od 400 zł</div>
         </div>
-
-        <div class="treat-panel" id="panel-paznokcie">
-          <div class="treat-row"><span class="idx">01</span><h3>Manicure hybrydowy</h3><p class="desc">Trwały kolor z pielęgnacją paznokcia i skórek.</p><span class="price">130 zł</span></div>
-          <div class="treat-row"><span class="idx">02</span><h3>Przedłużanie paznokci żelowe</h3><p class="desc">Dowolna długość, pełne modelowanie w żelu.</p><span class="price">od 180 zł</span></div>
-          <div class="treat-row"><span class="idx">03</span><h3>Manicure klasyczny</h3><p class="desc">Manicure medyczny z wzmocnieniem paznokcia.</p><span class="price">80 zł</span></div>
-          <div class="treat-row"><span class="idx">04</span><h3>Pedicure hybrydowy</h3><p class="desc">Klasyczny zabieg pielęgnacyjny z hybrydą na stopach.</p><span class="price">100 zł</span></div>
+        <div class="offer">
+          <h3>Manualny drenaż limfatyczny</h3>
+          <p class="desc">Delikatny masaż wspierający układ limfatyczny, redukujący obrzęki i przyspieszający regenerację.</p>
+          <div class="price">220 zł</div>
         </div>
-
-        <div class="treat-panel" id="panel-zaawansowane">
-          <div class="treat-row"><span class="idx">01</span><h3>Karboksyterapia CO2 (RIBESKIN)</h3><p class="desc">Dwutlenek węgla pobudzający regenerację skóry twarzy.</p><span class="price">198 zł</span></div>
-          <div class="treat-row"><span class="idx">02</span><h3>Zabieg Jurgita Cosmeceuticals</h3><p class="desc">Rewitalizacja i kolagenowa regeneracja skóry.</p><span class="price">od 180 zł</span></div>
-          <div class="treat-row"><span class="idx">03</span><h3>Owijanie Jurgita Tone Up</h3><p class="desc">Napięcie skóry, drenaż i redukcja cellulitu w jednym zabiegu.</p><span class="price">225 zł</span></div>
-          <div class="treat-row"><span class="idx">04</span><h3>Fototerapia Celluma LED</h3><p class="desc">Trzy długości fal światła — regeneracja i redukcja stanów zapalnych.</p><span class="price">72 zł</span></div>
-          <div class="treat-row"><span class="idx">05</span><h3>Elektrostymulacja BodyPro</h3><p class="desc">Pole elektromagnetyczne wzmacniające mięśnie bez ćwiczeń.</p><span class="price">od 160 zł</span></div>
+        <div class="offer">
+          <h3>Endermologia — ciało i twarz</h3>
+          <p class="desc">Zaawansowany zabieg, który modeluje sylwetkę i odmładza skórę twarzy.</p>
+          <div class="price">od 90 zł<small>1 obszar 90 zł, zabieg 45 min 150 zł, twarz 150 zł</small></div>
         </div>
-
+        <div class="offer">
+          <h3>Zabieg na twarz dedykowany</h3>
+          <p class="desc">Pielęgnacja dobrana do potrzeb Twojej skóry, po konsultacji i ocenie jej kondycji.</p>
+          <div class="price">330 zł</div>
+        </div>
+        <div class="offer">
+          <h3>Stylizacja paznokci</h3>
+          <p class="desc">Profesjonalna strefa paznokci: manicure hybrydowy oraz przedłużanie paznokci żelem.</p>
+          <div class="price">od 130 zł<small>hybrydowy 130 zł, przedłużanie 180 zł</small></div>
+        </div>
       </div>
 
       <div class="treat-more">
-        <p>To wybrane zabiegi z każdej kategorii — pełny, zawsze aktualny cennik (90+ pozycji, w tym bieżące promocje) znajdziesz na Booksy.</p>
-        <a href="https://booksy.com/pl-pl/238094_the-body-katowice_trening-i-dieta_11597_katowice" target="_blank" rel="noopener" class="btn btn-ghost-light">Zobacz pełny cennik na Booksy</a>
+        <p>Ceny mogą się zmieniać, a w Booksy znajdziesz też pakiety i bieżące promocje. Tam zawsze zobaczysz aktualny cennik.</p>
+        <div class="actions">
+          <a href="https://booksy.com/pl-pl/238094_the-body-katowice_trening-i-dieta_11597_katowice" target="_blank" rel="noopener" class="btn btn-gold">Zobacz pełny cennik na Booksy</a>
+          <a href="tel:+48881471411" class="btn btn-ghost-light">Zadzwoń: 881 471 411</a>
+        </div>
       </div>
     </div>
   </section>
@@ -572,13 +520,13 @@
       <div class="team-grid">
         <div class="person"><div class="avatar">OH</div><div><h4>Olena Hrynchuk</h4><span>Drenaż, masaż, lipoplastyka</span></div></div>
         <div class="person"><div class="avatar">NT</div><div><h4>Nataliia Tyshchenko</h4><span>Terapia blizn i skóry</span></div></div>
-        <div class="person"><div class="avatar">L</div><div><h4>Lucyna</h4><span>Zabiegi na twarz i ciało</span></div></div>
+        <div class="person"><div class="avatar">L</div><div><h4>Lucyna</h4><span>Masaż antycellulitowy</span></div></div>
         <div class="person"><div class="avatar">WW</div><div><h4>Wiera Wiśniewska</h4><span>Zabiegi na twarz i ciało</span></div></div>
-        <div class="person"><div class="avatar">SS</div><div><h4>Sandra Spałek</h4><span>Zabiegi na twarz i ciało</span></div></div>
-        <div class="person"><div class="avatar">DL</div><div><h4>Dagmara Lewandowska</h4><span>Zabiegi na twarz i ciało</span></div></div>
+        <div class="person"><div class="avatar">SS</div><div><h4>Sandra Spałek</h4><span>Modelowanie sylwetki, laser</span></div></div>
+        <div class="person"><div class="avatar">DL</div><div><h4>Dagmara Lewandowska</h4><span>Elektrostymulacja, lipoplastyka</span></div></div>
         <div class="person"><div class="avatar">M</div><div><h4>Martyna</h4><span>Stylizacja paznokci</span></div></div>
         <div class="person"><div class="avatar">A</div><div><h4>Anastazja</h4><span>Stylizacja paznokci</span></div></div>
-        <div class="person"><div class="avatar">SP</div><div><h4>Sonia / Paulina</h4><span>Recepcja</span></div></div>
+        <div class="person"><div class="avatar">SP</div><div><h4>Sonia / Paulina</h4><span>Recepcja i konsultacje</span></div></div>
       </div>
     </div>
   </section>
@@ -677,18 +625,6 @@
   burgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
   closeBtn.addEventListener('click', () => mobileNav.classList.remove('open'));
   mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
-
-  // Treatment category tabs
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.treat-panel');
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-    });
-  });
 
   const testimonials = [
     { quote: "Po trzech sesjach terapii blizny metodą MSTR nie spodziewałam się aż takich efektów — blizna, którą miałam od dziecka, wygląda zupełnie inaczej.", author: "Anna Spiridonova, Google" },
@@ -840,7 +776,18 @@
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(en){ running=en[0].isIntersecting; }).observe(track);
     }
-    var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(center,150); });
+    // przy zmianie szerokości okna przelicz układ (pasek adresu na telefonie nie zmienia szerokości, więc go ignorujemy)
+    var rt, lastW=window.innerWidth;
+    window.addEventListener('resize',function(){
+      clearTimeout(rt);
+      rt=setTimeout(function(){
+        if(window.innerWidth===lastW) return;
+        lastW=window.innerWidth;
+        var oldS=S||1, frac=pos/oldS;
+        measure();
+        pos=frac*S; wrap(); track.scrollLeft=pos; last=track.scrollLeft;
+      },150);
+    });
 
     center();
     requestAnimationFrame(function(t){ prev=t; tick(t); });
