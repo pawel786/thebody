@@ -447,6 +447,11 @@
           <div class="price">220 zł</div>
         </div>
         <div class="offer">
+          <h3>Endermologia — ciało i twarz</h3>
+          <p class="desc">Zaawansowany zabieg, który modeluje sylwetkę i odmładza skórę twarzy.</p>
+          <div class="price">od 90 zł<small>1 obszar 90 zł, zabieg 45 min 150 zł, twarz 150 zł</small></div>
+        </div>
+        <div class="offer">
           <h3>Zabieg na twarz dedykowany</h3>
           <p class="desc">Pielęgnacja dobrana do potrzeb Twojej skóry, po konsultacji i ocenie jej kondycji.</p>
           <div class="price">330 zł</div>
@@ -485,7 +490,7 @@
         </div>
         <div class="step">
           <div class="num">02</div>
-          <h3>Plan zabiegowy</h3>
+          <h3>Diagnoza i plan</h3>
           <p>Dobieramy zabiegi i częstotliwość sesji indywidualnie do przypadku.</p>
         </div>
         <div class="step">
@@ -513,14 +518,18 @@
         <p>Każda klientka pracuje z jedną specjalistką od konsultacji po ostatnią sesję.</p>
       </div>
       <div class="team-grid">
-        <div class="person"><div class="avatar">OH</div><div><h4>Olena Hrynchuk</h4><span>Masaże</span></div></div>
-        <div class="person"><div class="avatar">LL</div><div><h4>Lucyna</h4><span>Zabiegi na twarz i ciało
+        <div class="person"><div class="avatar">OH</div><div><h4>Olena Hrynchuk</h4><span>Drenaż, masaż, lipoplastyka</span></div></div>
+        <div class="person"><div class="avatar">NT</div><div><h4>Nataliia Tyshchenko</h4><span>Terapia blizn i skóry</span></div></div>
+        <div class="person"><div class="avatar">L</div><div><h4>Lucyna</h4><span>Masaż antycellulitowy</span></div></div>
         <div class="person"><div class="avatar">WW</div><div><h4>Wiera Wiśniewska</h4><span>Zabiegi na twarz i ciało</span></div></div>
-        <div class="person"><div class="avatar">SS</div><div><h4>Sandra Spałek</h4><span>Zabiegi na twarz i ciało</span></div></div>
-        <div class="person"><div class="avatar">DL</div><div><h4>Dagmara Lewandowska</h4><span>Zabiegi na twarz i ciało</span></div></div>
+        <div class="person"><div class="avatar">SS</div><div><h4>Sandra Spałek</h4><span>Modelowanie sylwetki, laser</span></div></div>
+        <div class="person"><div class="avatar">DL</div><div><h4>Dagmara Lewandowska</h4><span>Elektrostymulacja, lipoplastyka</span></div></div>
         <div class="person"><div class="avatar">M</div><div><h4>Martyna</h4><span>Stylizacja paznokci</span></div></div>
         <div class="person"><div class="avatar">A</div><div><h4>Anastazja</h4><span>Stylizacja paznokci</span></div></div>
-        <div class="person"><div class="avatar">SP</div><div><h4>Sonia / Paulina</h4><span>Recepcja</span></div></div>
+        <div class="person"><div class="avatar">SP</div><div><h4>Sonia / Paulina</h4><span>Recepcja i konsultacje</span></div></div>
+      </div>
+    </div>
+  </section>
 
   <!-- TESTIMONIALS -->
   <section class="testimonials" id="opinie">
