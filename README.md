@@ -514,7 +514,7 @@
       </div>
       <div class="team-grid">
         <div class="person"><div class="avatar">OH</div><div><h4>Olena Hrynchuk</h4><span>Masaże</span></div></div>
-        <div class="person"><div class="avatar">L</div><div><h4>Lucyna</h4><span>Zabiegi na twarz i ciało
+        <div class="person"><div class="avatar">LL</div><div><h4>Lucyna</h4><span>Zabiegi na twarz i ciało
         <div class="person"><div class="avatar">WW</div><div><h4>Wiera Wiśniewska</h4><span>Zabiegi na twarz i ciało</span></div></div>
         <div class="person"><div class="avatar">SS</div><div><h4>Sandra Spałek</h4><span>Zabiegi na twarz i ciało</span></div></div>
         <div class="person"><div class="avatar">DL</div><div><h4>Dagmara Lewandowska</h4><span>Zabiegi na twarz i ciało</span></div></div>
