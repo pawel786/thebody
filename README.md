@@ -447,11 +447,6 @@
           <div class="price">220 zł</div>
         </div>
         <div class="offer">
-          <h3>Endermologia — ciało i twarz</h3>
-          <p class="desc">Zaawansowany zabieg, który modeluje sylwetkę i odmładza skórę twarzy.</p>
-          <div class="price">od 90 zł<small>1 obszar 90 zł, zabieg 45 min 150 zł, twarz 150 zł</small></div>
-        </div>
-        <div class="offer">
           <h3>Zabieg na twarz dedykowany</h3>
           <p class="desc">Pielęgnacja dobrana do potrzeb Twojej skóry, po konsultacji i ocenie jej kondycji.</p>
           <div class="price">330 zł</div>
